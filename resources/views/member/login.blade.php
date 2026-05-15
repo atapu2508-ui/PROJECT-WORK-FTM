@@ -114,6 +114,12 @@
                 </div>
             </div>
 
+            <div class="text-right -mt-2">
+                <a href="{{ route('member.forgot-password.form') }}" class="text-sm brand-link hover:underline">
+                    Lupa Password?
+                </a>
+            </div>
+
             <button type="submit"
                 class="w-full btn-primary text-white px-6 py-3 rounded-xl font-semibold shadow-sm">
                 Masuk

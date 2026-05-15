@@ -1,0 +1,217 @@
+/* ════════════════════════════════════════════════════════════════ */
+/* FTM SOCIETY — BRAND TYPOGRAPHY SYSTEM                              */
+/* Local Web Fonts (Nord + Instrument Serif)                          */
+/* Self-hosted at /public/fonts                                       */
+/* ════════════════════════════════════════════════════════════════ */
+
+/* ── Nord Thin (100) ── */
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-Thin.woff2') format('woff2'),
+         url('/fonts/Nord-Thin.woff')  format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-ThinItalic.woff2') format('woff2'),
+         url('/fonts/Nord-ThinItalic.woff')  format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ── Nord Light (300) ── */
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-Light.woff2') format('woff2'),
+         url('/fonts/Nord-Light.woff')  format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-LightItalic.woff2') format('woff2'),
+         url('/fonts/Nord-LightItalic.woff')  format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ── Nord Book (400) ── */
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-Book.woff2') format('woff2'),
+         url('/fonts/Nord-Book.woff')  format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-BookItalic.woff2') format('woff2'),
+         url('/fonts/Nord-BookItalic.woff')  format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ── Nord Medium (500) ── */
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-Medium.woff2') format('woff2'),
+         url('/fonts/Nord-Medium.woff')  format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-MediumItalic.woff2') format('woff2'),
+         url('/fonts/Nord-MediumItalic.woff')  format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ── Nord Bold (700) ── */
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-Bold.woff2') format('woff2'),
+         url('/fonts/Nord-Bold.woff')  format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-BoldItalic.woff2') format('woff2'),
+         url('/fonts/Nord-BoldItalic.woff')  format('woff');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ── Nord Black (900) ── */
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-Black.woff2') format('woff2'),
+         url('/fonts/Nord-Black.woff')  format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Nord';
+    src: url('/fonts/Nord-BlackItalic.woff2') format('woff2'),
+         url('/fonts/Nord-BlackItalic.woff')  format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ── Instrument Serif (Local fallback) ── */
+@font-face {
+    font-family: 'Instrument Serif';
+    src: url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Instrument Serif';
+    src: url('/fonts/InstrumentSerif-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ════════════════════════════════════════════════════════════════ */
+/* GLOBAL TYPOGRAPHY HIERARCHY                                        */
+/* Nord: headline, hero, UI bold                                      */
+/* Instrument Serif: feminine accent / quote                          */
+/* Poppins: body, form, caption                                       */
+/* ════════════════════════════════════════════════════════════════ */
+
+body {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+p,
+li,
+label,
+td,
+th {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.65;
+    letter-spacing: 0.15px;
+}
+
+/* Heading hierarchy — Nord */
+h1, h2, h3, h4, h5, h6,
+.font-heading,
+.font-nord {
+    font-family: 'Nord', 'Poppins', sans-serif;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+h1, .font-display {
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+/* Navigation, button, brand UI — Nord Medium-Bold */
+nav a,
+button,
+.btn {
+    font-family: 'Nord', 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Logo / wordmark */
+.logo {
+    font-family: 'Nord', sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+}
+
+/* Feminine accent — Instrument Serif italic */
+.font-accent,
+.font-instrument,
+.accent-serif {
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif !important;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+/* Form fields stay readable */
+input,
+select,
+textarea,
+option {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+/* Remix Icons untouched */
+i[class^="ri-"],
+i[class*=" ri-"] {
+    font-family: 'remixicon' !important;
+}
+
+/* Utility helpers */
+.font-poppins    { font-family: 'Poppins', sans-serif !important; }
+.font-nord       { font-family: 'Nord', 'Poppins', sans-serif !important; }
+.font-instrument { font-family: 'Instrument Serif', Georgia, serif !important; }

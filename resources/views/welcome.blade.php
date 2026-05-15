@@ -9,64 +9,56 @@
     <!-- end favicon  -->
     <title>FTM SOCIETY - Muslimah-Only Gym</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config = { theme: { extend: { colors: { primary: "#EA6993", secondary: "#793451", accent: "#00745F", "light-pink": "#F1CCE3", cream: "#F4EEE6", dark: "#26282B" }, borderRadius: { button: "8px" } } } };</script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: "#E8618C", secondary: "#6B2D4E", accent: "#1A7A6E", "light-pink": "#E8C4D8", cream: "#F5EFE6", dark: "#1C1C1E", "springs-ivy": "#1A5C4A", "grounded-green": "#C8D9A0", "power-pink": "#E8618C", "burnt-cherry": "#6B2D4E", "soft-petals": "#E8C4D8", "patina-green": "#1A7A6E", "layl": "#1C1C1E", "rising": "#F5EFE6" }, fontFamily: { nord: ['Nord', 'Poppins', 'sans-serif'], instrument: ['"Instrument Serif"', 'Georgia', 'serif'], poppins: ['Poppins', 'sans-serif'] }, borderRadius: { button: "8px" } } } };</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
     />
+
+    {{-- ═══════════════════════════════════════════════════════ --}}
+    {{-- FTM BRAND TYPOGRAPHY — Self-hosted Nord + Instrument     --}}
+    {{-- ═══════════════════════════════════════════════════════ --}}
+    <link rel="preload" href="{{ asset('fonts/Nord-Black.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/Nord-Bold.woff2') }}"  as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/Nord-Book.woff2') }}"  as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ asset('css/ftm-typography.css') }}">
     <style>
-            /* ...existing CSS... */
+            /* Body & layout helpers (typography handled by ftm-typography.css) */
       body {
-      font-family: 'Poppins', sans-serif !important;
-      scroll-behavior: smooth;
-      font-size: 16px;
-      line-height: 1.6;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      }
-      body * {
-      font-family: 'Poppins', sans-serif !important;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
       }
       p {
-      font-weight: 500;
-      line-height: 1.6;
-      letter-spacing: 0.3px;
+        line-height: 1.65;
       }
       h1, h2, h3, h4, h5, h6 {
-      font-family: 'Poppins', sans-serif !important;
-      font-weight: 700;
-      line-height: 1.3;
-      letter-spacing: 0.5px;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
       }
       nav,
       button,
       a,
       span,
       label {
-      font-family: 'Poppins', sans-serif !important;
-      letter-spacing: 0.3px;
+        letter-spacing: 0.2px;
       }
       nav a,
       button {
-      font-weight: 600;
+        font-weight: 600;
       }
       input,
       select,
       textarea,
       option,
-      summary,
-      .logo,
-      .font-heading,
-      .font-body,
-      .font-accent {
-      font-family: 'Poppins', sans-serif !important;
+      summary {
+        font-family: 'Poppins', sans-serif;
       }
       i[class^="ri-"],
       i[class*=" ri-"] {
-      font-family: 'remixicon' !important;
+        font-family: 'remixicon' !important;
       }
       @keyframes fadeInUp {
         from { opacity: 0; transform: translateY(40px);}
@@ -84,15 +76,16 @@
       }
       
       .logo {
-      font-family: 'Poppins', sans-serif;
+        font-family: 'Nord', sans-serif;
+        font-weight: 900;
       }
       .hero-section {
-      background-image: linear-gradient(135deg, rgba(8, 81, 60, 0.85) 0%, rgba(121, 52, 81, 0.8) 100%), url('./images/IMG_0278.jpg');
+      background-image: linear-gradient(135deg, rgba(107, 45, 78, 0.88) 0%, rgba(232, 97, 140, 0.82) 100%), url('./images/IMG_0278.jpg');
       background-size: cover;
       background-position: center;
       }
       .testimonial-section {
-      background-image: linear-gradient(rgba(241, 204, 227, 0.1), rgba(210, 220, 165, 0.08)), url('https://readdy.ai/api/search-image?query=subtle%2520elegant%2520pattern%2520background%252C%2520very%2520light%2520and%2520minimal%252C%2520soft%2520pink%2520and%2520beige%2520tones%252C%2520delicate%2520Islamic%2520geometric%2520patterns%252C%2520barely%2520visible%252C%2520extremely%2520subtle%2520texture%252C%2520professional%2520photography&width=1920&height=600&seq=2&orientation=landscape');
+      background-image: linear-gradient(rgba(232, 196, 216, 0.15), rgba(200, 217, 160, 0.1)), url('https://readdy.ai/api/search-image?query=subtle%2520elegant%2520pattern%2520background%252C%2520very%2520light%2520and%2520minimal%252C%2520soft%2520pink%2520and%2520beige%2520tones%252C%2520delicate%2520Islamic%2520geometric%2520patterns%252C%2520barely%2520visible%252C%2520extremely%2520subtle%2520texture%252C%2520professional%2520photography&width=1920&height=600&seq=2&orientation=landscape');
       background-size: cover;
       background-position: center;
       }
@@ -114,7 +107,7 @@
       }
       .class-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px -5px rgba(234, 105, 147, 0.2);
+      box-shadow: 0 10px 25px -5px rgba(232, 97, 140, 0.2);
       }
       .feature-card:hover {
       transform: translateY(-5px);
@@ -177,44 +170,132 @@
 .animate-fadeIn {
   animation: fadeIn 0.3s ease;
 }
+
+/* ============================================ */
+/* FTM SOCIETY BRAND ORNAMENTS & SIGNATURE      */
+/* Ciri khas visual - Flower, Asterisk, C-mark  */
+/* ============================================ */
+
+/* Brand Flower Ornament (4-petal) - inline SVG as background */
+.brand-flower {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%231C1C1E' d='M50 8c-13 0-20 10-20 20 0 6 3 11 7 14-6 3-10 8-10 15 0 10 9 18 23 18s23-8 23-18c0-7-4-12-10-15 4-3 7-8 7-14 0-10-7-20-20-20z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.85;
+}
+.brand-flower-pink  { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23E8618C' d='M50 8c-13 0-20 10-20 20 0 6 3 11 7 14-6 3-10 8-10 15 0 10 9 18 23 18s23-8 23-18c0-7-4-12-10-15 4-3 7-8 7-14 0-10-7-20-20-20z'/%3E%3C/svg%3E"); }
+.brand-flower-cherry{ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%236B2D4E' d='M50 8c-13 0-20 10-20 20 0 6 3 11 7 14-6 3-10 8-10 15 0 10 9 18 23 18s23-8 23-18c0-7-4-12-10-15 4-3 7-8 7-14 0-10-7-20-20-20z'/%3E%3C/svg%3E"); }
+.brand-flower-ivory { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23F5EFE6' d='M50 8c-13 0-20 10-20 20 0 6 3 11 7 14-6 3-10 8-10 15 0 10 9 18 23 18s23-8 23-18c0-7-4-12-10-15 4-3 7-8 7-14 0-10-7-20-20-20z'/%3E%3C/svg%3E"); }
+
+/* Brand Asterisk/Star Ornament (8-point) */
+.brand-asterisk {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23E8618C' d='M45 5h10v90h-10zM5 45h90v10H5zM14.64 21.71l7.07-7.07 63.64 63.64-7.07 7.07zM85.36 14.64l7.07 7.07-63.64 63.64-7.07-7.07z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.brand-asterisk-ivory { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23F5EFE6' d='M45 5h10v90h-10zM5 45h90v10H5zM14.64 21.71l7.07-7.07 63.64 63.64-7.07 7.07zM85.36 14.64l7.07 7.07-63.64 63.64-7.07-7.07z'/%3E%3C/svg%3E"); }
+
+/* C-mark (half-moon/lotus curve) ornament */
+.brand-cmark {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%236B2D4E' d='M10 50C10 28 28 10 50 10v18c-12 0-22 10-22 22s10 22 22 22v18C28 90 10 72 10 50zm80 0C90 28 72 10 50 10v18c12 0 22 10 22 22s-10 22-22 22v18c22 0 40-18 40-40z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Three-dots ornament (Rising/trio) */
+.brand-trio {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='28' r='18' fill='%23E8618C'/%3E%3Ccircle cx='26' cy='72' r='18' fill='%236B2D4E'/%3E%3Ccircle cx='74' cy='72' r='18' fill='%231A7A6E'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Brand gradient utility classes */
+.bg-brand-pink-gradient   { background: linear-gradient(135deg, #E8618C 0%, #6B2D4E 100%); }
+.bg-brand-green-gradient  { background: linear-gradient(135deg, #1A7A6E 0%, #1A5C4A 100%); }
+.bg-brand-soft-gradient   { background: linear-gradient(135deg, #F5EFE6 0%, #E8C4D8 100%); }
+.bg-brand-nature-gradient { background: linear-gradient(135deg, #C8D9A0 0%, #1A7A6E 100%); }
+
+.text-brand-gradient {
+  background: linear-gradient(135deg, #E8618C 0%, #6B2D4E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Signature decorative divider with flower + asterisk */
+.brand-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.brand-divider::before,
+.brand-divider::after {
+  content: "";
+  height: 1px;
+  width: 80px;
+  background: linear-gradient(90deg, transparent, #E8618C, transparent);
+}
+
+/* Keyframe: gentle float for ornaments */
+@keyframes brandFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-10px) rotate(8deg); }
+}
+.brand-float {
+  animation: brandFloat 5s ease-in-out infinite;
+}
     </style>
   </head>
   <body class="bg-cream text-dark">
     
   <!-- Header -->
 <header class="fixed w-full bg-cream bg-opacity-95 shadow-sm z-50">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="container mx-auto px-4 py-3 grid grid-cols-3 items-center">
 
-        <!-- LOGO -->
-        <a href="{{ route('member.dashboard') }}" class="logo text-[#EA6993] text-2xl font-heading font-bold hover:text-[#793451] transition tracking-tight">
-          <span class="font-accent italic text-3xl align-top mr-1">FTM <span class="font-accent italic text-3xl align-top ml-1">SOCIETY</span>
+        <!-- LOGO (kiri) -->
+        <a href="{{ route('member.dashboard') }}" class="logo text-2xl hover:opacity-80 transition tracking-tight flex items-baseline gap-1.5 justify-self-start">
+            <span class="font-nord font-black text-[#E8618C]">FTM</span>
+            <span class="font-instrument italic text-[#6B2D4E] text-3xl">Society</span>
         </a>
 
-        <!-- DESKTOP NAVIGATION -->
-        <nav class="hidden md:flex items-center space-x-8">
+        <!-- DESKTOP NAVIGATION (tengah) -->
+        <nav class="hidden md:flex items-center justify-center space-x-8">
             <a href="#home" class="text-dark hover:text-primary transition">Home</a>
-            <a href="#about" class="text-dark hover:text-primary transition">About</a>
             <a href="#Programs" class="text-dark hover:text-primary transition">Programs</a>
-            <a href="#classes" class="text-dark hover:text-primary transition">Classes</a>
-            <a href="#schedule" class="text-dark hover:text-primary transition">Schedule</a>
+            <a href="#about" class="text-dark hover:text-primary transition">About</a>
             <a href="#Facility" class="text-dark hover:text-primary transition">Gallery</a>
             <a href="#contact" class="text-dark hover:text-primary transition">Contact</a>
-
-            <a href="#join"
-                class="bg-primary text-white px-6 py-2 rounded-button hover:bg-accent hover:scale-105 transition font-semibold">
-                Join Now
-            </a>
-
-            <a href="{{ route('member.login') }}"
-                class="bg-primary text-white px-6 py-2 rounded-button hover:bg-secondary hover:scale-105 transition font-semibold">
-                Login
-            </a>
         </nav>
 
-        <button id="mobile-menu-button"
-            class="block md:hidden text-dark text-4xl font-bold leading-none">
-            ⋮
-        </button>
+        <!-- LOGIN + HAMBURGER (kanan) -->
+        <div class="flex items-center justify-end gap-4">
+            <a href="{{ route('member.login') }}"
+               class="hidden md:inline-flex bg-primary text-white px-6 py-2 rounded-button hover:bg-secondary hover:scale-105 transition font-semibold">
+                Login
+            </a>
+            <button id="mobile-menu-button"
+                class="block md:hidden text-dark text-4xl font-bold leading-none">
+                ⋮
+            </button>
+        </div>
 
     </div>
 </header>
@@ -337,6 +418,11 @@
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div class="absolute top-1/4 -right-48 w-96 h-96 bg-light-pink/15 rounded-full blur-3xl opacity-60 animate-pulse" style="animation-duration: 6s;"></div>
         <div class="absolute bottom-1/4 -left-48 w-96 h-96 bg-cream/10 rounded-full blur-3xl opacity-50 animate-pulse" style="animation-duration: 7s; animation-delay: 1.5s;"></div>
+
+        <!-- Brand Ornament Signatures -->
+        <div class="brand-flower brand-flower-ivory brand-float absolute top-24 right-[12%] opacity-20" style="width: 70px; height: 70px;"></div>
+        <div class="brand-asterisk brand-asterisk-ivory brand-float absolute bottom-32 right-[8%] opacity-25" style="width: 42px; height: 42px; animation-delay: 1s;"></div>
+        <div class="brand-cmark brand-float absolute top-1/3 left-[6%] opacity-15" style="width: 60px; height: 60px; filter: invert(96%) sepia(10%) saturate(200%) hue-rotate(330deg); animation-delay: 2s;"></div>
     </div>
 
     <!-- Main Content Container -->
@@ -349,6 +435,7 @@
                 <!-- Premium Glass Effect Badge -->
                 <div data-aos="fade-right" 
                      class="inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-xl bg-white/[0.08] border-2 border-white/30 shadow-2xl hover:bg-white/[0.12] hover:border-white/50 transition-all duration-300 group">
+                    <span class="brand-flower brand-flower-ivory" style="width: 18px; height: 18px;"></span>
                     <span class="relative flex h-3 w-3">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-light-pink opacity-80"></span>
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-light-pink shadow-lg"></span>
@@ -360,26 +447,26 @@
 
                 <!-- Main Heading - Premium Typography with Gradient & Shadow -->
                 <div data-aos="fade-right" data-aos-delay="100" class="space-y-6">
-                    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] tracking-tighter drop-shadow-2xl" style="text-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                    <h1 class="font-nord text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] tracking-tighter drop-shadow-2xl" style="text-shadow: 0 20px 40px rgba(0,0,0,0.3);">
                         YOUR<br/>
                         <span class="relative inline-block my-3">
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-light-pink via-primary to-light-pink bg-[length:200%_auto] animate-gradient-shift drop-shadow-2xl" style="text-shadow: 0 10px 30px rgba(234, 105, 147, 0.4); filter: drop-shadow(0 20px 40px rgba(121, 52, 81, 0.3));">
-                                PRODUCTIVE
+                            <span class="font-instrument italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-light-pink via-primary to-light-pink bg-[length:200%_auto] animate-gradient-shift drop-shadow-2xl" style="text-shadow: 0 10px 30px rgba(232,97,140,0.4); filter: drop-shadow(0 20px 40px rgba(107,45,78,0.3)); letter-spacing: -0.02em;">
+                                Productive
                             </span>
                             <!-- Elegant Gradient Underline -->
                             <div class="absolute -bottom-4 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-light-pink to-transparent rounded-full opacity-80 blur-sm"></div>
                             <div class="absolute -bottom-3 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
                         </span><br/>
-                        <span class="bg-gradient-to-r from-white to-cream bg-clip-text text-transparent">SISTER</span>
+                        <span class="font-nord bg-gradient-to-r from-white to-cream bg-clip-text text-transparent">SISTER</span>
                     </h1>
                 </div>
 
                 <!-- Subtitle - Refined Spacing & Hierarchy -->
                 <div data-aos="fade-right" data-aos-delay="200" class="space-y-3 pt-4">
-                    <p class="text-xl sm:text-2xl md:text-3xl text-white font-semibold leading-relaxed tracking-wide">
+                    <p class="font-poppins text-xl sm:text-2xl md:text-3xl text-white font-medium leading-relaxed tracking-wide">
                         Good Habit inside
                     </p>
-                    <p class="text-2xl sm:text-3xl md:text-4xl font-black bg-gradient-to-r from-light-pink to-primary bg-clip-text text-transparent drop-shadow-lg" style="text-shadow: 0 8px 20px rgba(234, 105, 147, 0.3);">
+                    <p class="font-instrument italic text-3xl sm:text-4xl md:text-5xl bg-gradient-to-r from-light-pink to-primary bg-clip-text text-transparent drop-shadow-lg" style="text-shadow: 0 8px 20px rgba(232,97,140,0.3);">
                         Productive Muslimah
                     </p>
                 </div>
@@ -453,6 +540,10 @@
         <div class="absolute -top-48 -left-48 w-96 h-96 bg-gradient-to-br from-secondary/20 to-light-pink/20 rounded-full blur-3xl animate-pulse" style="animation-duration: 4s;"></div>
         <div class="absolute top-1/3 -right-64 w-[500px] h-[500px] bg-gradient-to-tl from-primary/15 to-light-pink/15 rounded-full blur-3xl animate-pulse" style="animation-duration: 6s; animation-delay: 1s;"></div>
         <div class="absolute -bottom-32 left-1/3 w-80 h-80 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl animate-pulse" style="animation-duration: 5s; animation-delay: 2s;"></div>
+
+        <!-- Brand Ornaments -->
+        <div class="brand-flower brand-flower-pink brand-float absolute top-12 right-[10%]" style="width: 55px; height: 55px; opacity: 0.35;"></div>
+        <div class="brand-asterisk brand-float absolute bottom-24 left-[8%]" style="width: 38px; height: 38px; opacity: 0.4; animation-delay: 1.5s;"></div>
     </div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -462,6 +553,7 @@
             
             <!-- Top Badge with Shimmer Effect -->
             <div class="inline-flex items-center gap-2 px-5 py-2.5 mb-6 bg-gradient-to-r from-secondary/10 via-light-pink/50 to-secondary/10 rounded-full border border-secondary/20 shadow-lg backdrop-blur-sm">
+                <span class="brand-flower brand-flower-cherry" style="width: 16px; height: 16px;"></span>
                 <div class="relative">
                     <div class="w-2 h-2 bg-secondary rounded-full animate-ping absolute"></div>
                     <div class="w-2 h-2 bg-secondary rounded-full relative"></div>
@@ -536,6 +628,10 @@
                             <span class="font-bold text-primary text-sm">Trusted Community</span>
                         </div>
                     </div>
+
+                    <!-- Signature Brand Flower Ornament -->
+                    <div class="brand-flower brand-flower-pink brand-float absolute -bottom-8 -right-8 hidden lg:block" style="width: 80px; height: 80px; z-index: 5;"></div>
+                    <div class="brand-asterisk brand-float absolute -top-10 right-10 hidden lg:block" style="width: 36px; height: 36px; animation-delay: 1s; z-index: 5;"></div>
 
                     <!-- Decorative Blur Elements -->
                     <div class="absolute -top-8 -left-8 w-32 h-32 bg-secondary/30 rounded-full blur-3xl -z-10"></div>
@@ -637,7 +733,7 @@
                         
                         <div class="relative flex items-start gap-4">
                             <div class="relative flex-shrink-0">
-                                <div class="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-200 text-indigo-600 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                                <div class="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-grounded-green to-patina-green text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
                                     <i class="ri-pray-line text-3xl"></i>
                                 </div>
                                 <div class="absolute -top-1 -right-1 w-4 h-4 bg-secondary rounded-full border-2 border-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -887,6 +983,7 @@
             
             <!-- Top Badge -->
             <div class="inline-flex items-center gap-2 px-5 py-2.5 mb-6 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full border border-primary/20 shadow-lg backdrop-blur-sm">
+                <span class="brand-flower brand-flower-pink" style="width: 16px; height: 16px;"></span>
                 <div class="relative">
                     <div class="w-2 h-2 bg-primary rounded-full animate-ping absolute"></div>
                     <div class="w-2 h-2 bg-primary rounded-full relative"></div>
@@ -1016,7 +1113,7 @@
                         <div class="relative z-10 flex flex-col items-center text-center flex-1">
                             
                             <div class="relative mb-6">
-                                <div class="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-200 text-indigo-600 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                                <div class="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-grounded-green to-patina-green text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
                                     <i class="ri-shield-user-line text-4xl"></i>
                                 </div>
                                 <div class="absolute -inset-2 rounded-2xl border-2 border-secondary/20 group-hover:border-secondary/40 group-hover:scale-110 transition-all duration-500"></div>
@@ -1045,7 +1142,7 @@
                         <div class="relative z-10 flex flex-col items-center text-center flex-1">
                             
                             <div class="relative mb-6">
-                                <div class="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-rose-100 to-rose-200 text-rose-600 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                                <div class="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-soft-petals to-power-pink text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
                                     <i class="ri-user-heart-line text-4xl"></i>
                                 </div>
                                 <div class="absolute -inset-2 rounded-2xl border-2 border-primary/20 group-hover:border-primary/40 group-hover:scale-110 transition-all duration-500"></div>
@@ -1166,6 +1263,7 @@
 
   .animate-gradient-shift {
         /* DISABLED FOR PERFORMANCE: animation: gradient-shift 4s ease infinite; */
+  }
 
   /* Enhanced Hover Effects */
   .feature-card {
@@ -1236,6 +1334,7 @@
             
             <!-- Top Badge -->
             <div class="inline-flex items-center gap-2 px-5 py-2.5 mb-6 bg-gradient-to-r from-secondary/10 via-light-pink/50 to-secondary/10 rounded-full border border-secondary/20 shadow-lg backdrop-blur-sm">
+                <span class="brand-flower brand-flower-cherry" style="width: 16px; height: 16px;"></span>
                 <div class="relative">
                     <div class="w-2 h-2 bg-secondary rounded-full animate-ping absolute"></div>
                     <div class="w-2 h-2 bg-secondary rounded-full relative"></div>
@@ -1403,11 +1502,11 @@
                         <div class="relative z-10 flex flex-col items-center flex-1">
                             
                             <div class="relative mb-6">
-                                <div class="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 shadow-lg transition-transform duration-300 group-hover:scale-110" style="will-change:transform;">
+                                <div class="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-soft-petals to-power-pink text-white shadow-lg transition-transform duration-300 group-hover:scale-110" style="will-change:transform;">
                                     <i class="ri-calendar-check-line text-4xl"></i>
                                 </div>
                                 <div class="absolute -inset-2 rounded-2xl border-2 border-secondary/20 group-hover:border-secondary/40 transition-colors duration-300"></div>
-                                <div class="absolute -top-2 -right-2 bg-gradient-to-r from-secondary to-blue-400 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="absolute -top-2 -right-2 bg-gradient-to-r from-secondary to-primary text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     Flexible
                                 </div>
                             </div>
@@ -1453,11 +1552,11 @@
                         <div class="relative z-10 flex flex-col items-center flex-1">
                             
                             <div class="relative mb-6">
-                                <div class="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-green-100 to-green-200 text-green-600 shadow-lg transition-transform duration-300 group-hover:scale-110" style="will-change:transform;">
+                                <div class="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-grounded-green to-patina-green text-white shadow-lg transition-transform duration-300 group-hover:scale-110" style="will-change:transform;">
                                     <i class="ri-group-line text-4xl"></i>
                                 </div>
                                 <div class="absolute -inset-2 rounded-2xl border-2 border-primary/20 group-hover:border-primary/40 transition-colors duration-300"></div>
-                                <div class="absolute -top-2 -right-2 bg-gradient-to-r from-primary to-green-400 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="absolute -top-2 -right-2 bg-gradient-to-r from-primary to-patina-green text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     Trending
                                 </div>
                             </div>
@@ -1504,11 +1603,11 @@
                         <div class="relative z-10 flex flex-col items-center flex-1">
                             
                             <div class="relative mb-6">
-                                <div class="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-amber-100 to-amber-200 text-amber-600 shadow-lg transition-transform duration-300 group-hover:scale-110" style="will-change:transform;">
+                                <div class="w-20 h-20 flex items-center justify-center rounded-2xl bg-gradient-to-br from-burnt-cherry to-power-pink text-white shadow-lg transition-transform duration-300 group-hover:scale-110" style="will-change:transform;">
                                     <i class="ri-award-line text-4xl"></i>
                                 </div>
                                 <div class="absolute -inset-2 rounded-2xl border-2 border-secondary/20 group-hover:border-secondary/40 transition-colors duration-300"></div>
-                                <div class="absolute -top-2 -right-2 bg-gradient-to-r from-secondary to-amber-400 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="absolute -top-2 -right-2 bg-gradient-to-r from-secondary to-primary text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     Premium
                                 </div>
                             </div>
@@ -1852,6 +1951,7 @@
         <!-- Section Header -->
         <div class="text-center mb-16 md:mb-24">
             <div class="inline-flex items-center gap-2 px-5 py-2.5 mb-6 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full border border-primary/20 shadow-lg backdrop-blur-sm">
+                <span class="brand-flower brand-flower-pink" style="width: 16px; height: 16px;"></span>
                 <div class="relative">
                     <div class="w-2 h-2 bg-primary rounded-full animate-ping absolute"></div>
                     <div class="w-2 h-2 bg-primary rounded-full relative"></div>
@@ -2148,6 +2248,7 @@
 
             <!-- Badge -->
             <div class="inline-flex items-center gap-2 px-5 py-2.5 mb-6 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full border border-primary/20 shadow-lg backdrop-blur-sm">
+                <span class="brand-flower brand-flower-pink" style="width: 16px; height: 16px;"></span>
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
@@ -2318,7 +2419,7 @@
 
                     <div class="flex items-center gap-3 mb-3">
                         <div class="w-10 h-10 flex items-center justify-center rounded-xl
-                                    bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600
+                                    bg-gradient-to-br from-soft-petals to-power-pink text-white
                                     shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                              style="will-change:transform; flex-shrink:0;">
                             <i class="ri-mental-health-line text-lg"></i>
@@ -2374,7 +2475,7 @@
 
                     <div class="flex items-center gap-3 mb-3">
                         <div class="w-10 h-10 flex items-center justify-center rounded-xl
-                                    bg-gradient-to-br from-green-100 to-green-200 text-green-600
+                                    bg-gradient-to-br from-grounded-green to-patina-green text-white
                                     shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                              style="will-change:transform; flex-shrink:0;">
                             <i class="ri-focus-3-line text-lg"></i>
@@ -2493,7 +2594,6 @@ const classSchedules = {
     @endforeach
 };
 
-<script>
   const classPrograms = {
     'muaythai': ["Exclusive Class Program", "Single Visit Class Program", "Private Program"],
     'body-shaping': ["Exclusive Class Program", "Single Visit Class Program", "Private Program"],
@@ -2695,6 +2795,7 @@ const classSchedules = {
 
             {{-- Badge --}}
             <div class="inline-flex items-center gap-2 px-5 py-2.5 mb-6 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full border border-primary/20 shadow-lg backdrop-blur-sm">
+                <span class="brand-flower brand-flower-pink" style="width: 16px; height: 16px;"></span>
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
@@ -2872,6 +2973,7 @@ const classSchedules = {
         <div class="text-center mb-14">
 
             <div class="inline-flex items-center gap-2 px-5 py-2.5 mb-6 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full border border-primary/20 shadow-lg backdrop-blur-sm">
+                <span class="brand-flower brand-flower-pink" style="width: 16px; height: 16px;"></span>
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
@@ -3080,8 +3182,16 @@ document.addEventListener('DOMContentLoaded', function () {
     <!-- Join Now Section -->
     <section id="join" class="py-20 bg-cream">
       <div class="container mx-auto px-4">
-        <div class="bg-primary rounded-lg overflow-hidden shadow-lg">
-          <div class="flex flex-col md:flex-row">
+        <div class="relative bg-gradient-to-br from-burnt-cherry via-primary to-burnt-cherry rounded-lg overflow-hidden shadow-2xl">
+
+          <!-- Decorative ornaments -->
+          <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="brand-flower brand-flower-ivory absolute -top-8 -right-8 opacity-15" style="width: 180px; height: 180px;"></div>
+            <div class="brand-asterisk brand-asterisk-ivory absolute bottom-10 left-10 opacity-15 brand-float" style="width: 60px; height: 60px;"></div>
+            <div class="brand-flower brand-flower-ivory absolute top-1/3 left-[45%] opacity-10 brand-float" style="width: 90px; height: 90px; animation-delay: 2s;"></div>
+          </div>
+
+          <div class="flex flex-col md:flex-row relative z-10">
             <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center">
               <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
                 Start Your Journey Today
@@ -3206,6 +3316,46 @@ document.addEventListener('DOMContentLoaded', function () {
             class="w-full px-4 py-3 rounded border border-light-pink focus:border-secondary" />
     </div>
 
+    {{-- Password Fields - untuk login member sendiri --}}
+    <div>
+        <label for="signup_password" class="block text-dark mb-2">
+            Password
+            <span class="text-xs text-dark/55 font-normal">(minimal 8 karakter)</span>
+        </label>
+        <div class="relative">
+            <input type="password" id="signup_password" name="password" placeholder="Buat password Anda" required minlength="8"
+                class="w-full px-4 py-3 pr-12 rounded border border-light-pink focus:border-secondary" />
+            <button type="button" data-toggle-target="signup_password"
+                    class="toggle-password absolute right-3 top-1/2 -translate-y-1/2 text-dark/40 hover:text-secondary transition">
+                <i class="ri-eye-line text-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    <div>
+        <label for="signup_password_confirmation" class="block text-dark mb-2">Konfirmasi Password</label>
+        <div class="relative">
+            <input type="password" id="signup_password_confirmation" name="password_confirmation" placeholder="Ulangi password Anda" required minlength="8"
+                class="w-full px-4 py-3 pr-12 rounded border border-light-pink focus:border-secondary" />
+            <button type="button" data-toggle-target="signup_password_confirmation"
+                    class="toggle-password absolute right-3 top-1/2 -translate-y-1/2 text-dark/40 hover:text-secondary transition">
+                <i class="ri-eye-line text-lg"></i>
+            </button>
+        </div>
+        <p id="password-match-status" class="text-xs mt-1 hidden"></p>
+    </div>
+
+    {{-- Info OTP --}}
+    <div class="bg-light-pink/40 border-l-4 border-primary px-4 py-3 rounded text-xs text-dark">
+        <div class="flex items-start gap-2">
+            <i class="ri-shield-check-line text-primary text-base mt-0.5"></i>
+            <div>
+                <strong class="text-secondary">Verifikasi WhatsApp:</strong>
+                Setelah daftar, Anda akan menerima kode OTP via WhatsApp ke nomor di atas. Pastikan nomor aktif.
+            </div>
+        </div>
+    </div>
+
     <div>
         <label for="birth_date" class="block text-dark mb-2">Tanggal Lahir</label>
 <input type="date" id="birth_date" name="birth_date" value="{{ old('birth_date') }}" required
@@ -3256,20 +3406,69 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     <button type="submit"
-        class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary hover:scale-105 hover:shadow-lg transition-all text-sm font-semibold text-center mx-auto block">
-        Sign Up Now
+        class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary hover:scale-105 hover:shadow-lg transition-all text-sm font-semibold text-center mx-auto block flex items-center justify-center gap-2">
+        <i class="ri-shield-check-line"></i>
+        Daftar &amp; Verifikasi via WhatsApp
     </button>
 </form>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const signupSection = document.getElementById('join');
-  const successPopup = document.getElementById('success-popup');
-  const errorPopup = document.getElementById('error-popup');
+    /* ====== Auto scroll ke #signup kalau ada popup atau hash ====== */
+    const signupSection = document.getElementById('join');
+    const successPopup  = document.getElementById('success-popup');
+    const errorPopup    = document.getElementById('error-popup');
 
-  if (signupSection && (successPopup || errorPopup || window.location.hash === '#signup')) {
-    signupSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+    if (signupSection && (successPopup || errorPopup || window.location.hash === '#signup')) {
+        signupSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* ====== Toggle visibility untuk semua field password ====== */
+    document.querySelectorAll('.toggle-password').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const targetId = this.getAttribute('data-toggle-target');
+            const input    = document.getElementById(targetId);
+            const icon     = this.querySelector('i');
+
+            if (!input) return;
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('ri-eye-line');
+                icon.classList.add('ri-eye-off-line');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('ri-eye-off-line');
+                icon.classList.add('ri-eye-line');
+            }
+        });
+    });
+
+    /* ====== Realtime password match indicator ====== */
+    const pw1    = document.getElementById('signup_password');
+    const pw2    = document.getElementById('signup_password_confirmation');
+    const status = document.getElementById('password-match-status');
+
+    function checkMatch() {
+        if (!pw1 || !pw2 || !status) return;
+        if (!pw2.value) {
+            status.classList.add('hidden');
+            return;
+        }
+        status.classList.remove('hidden');
+        if (pw1.value === pw2.value) {
+            status.textContent = '✓ Password cocok';
+            status.className   = 'text-xs mt-1 text-secondary font-semibold';
+        } else {
+            status.textContent = '✗ Password belum cocok';
+            status.className   = 'text-xs mt-1 text-primary font-semibold';
+        }
+    }
+
+    if (pw1 && pw2) {
+        pw1.addEventListener('input', checkMatch);
+        pw2.addEventListener('input', checkMatch);
+    }
 });
 </script>
 
@@ -3477,8 +3676,16 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
    <!-- Footer -->
-<footer class="bg-primary text-white pt-16 pb-8">
-  <div class="container mx-auto px-4">
+<footer class="relative bg-gradient-to-br from-burnt-cherry via-secondary to-burnt-cherry text-white pt-16 pb-8 overflow-hidden">
+
+  <!-- Footer decorative ornaments -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="brand-flower brand-flower-ivory absolute top-10 right-[8%] opacity-10" style="width: 120px; height: 120px;"></div>
+    <div class="brand-asterisk brand-asterisk-ivory absolute bottom-20 left-[5%] opacity-10" style="width: 80px; height: 80px;"></div>
+    <div class="brand-flower brand-flower-pink absolute -bottom-10 right-1/4 opacity-15" style="width: 160px; height: 160px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
       <!-- Column 1: Tentang Brand -->
@@ -3530,7 +3737,7 @@ document.addEventListener('DOMContentLoaded', function () {
             />
             <button
               type="submit"
-              class="bg-secondary text-white px-4 py-2 rounded-r hover:bg-opacity-90 transition-all whitespace-nowrap"
+              class="bg-power-pink text-white px-4 py-2 rounded-r hover:bg-patina-green transition-all whitespace-nowrap font-semibold"
             >
               Langganan
             </button>

@@ -74,6 +74,17 @@ Route::post('/signup', [CustomerSignupController::class, 'store'])->name('signup
 
 /*
 |--------------------------------------------------------------------------
+| OTP VERIFICATION (Public — selama session aktif)
+|--------------------------------------------------------------------------
+*/
+use App\Http\Controllers\OtpVerificationController;
+
+Route::get('/verify-otp',  [OtpVerificationController::class, 'show'])->name('member.otp.form');
+Route::post('/verify-otp', [OtpVerificationController::class, 'verify'])->name('member.otp.verify');
+Route::post('/verify-otp/resend', [OtpVerificationController::class, 'resend'])->name('member.otp.resend');
+
+/*
+|--------------------------------------------------------------------------
 | JOIN PROGRAM (Package Selection Flow)
 |--------------------------------------------------------------------------
 | Handles package selection from landing page → checkout
@@ -143,6 +154,12 @@ Route::middleware('guest:customer')->group(function () {
         ->name('member.register');
     Route::post('/member/register', [MemberAuthController::class, 'register'])
         ->name('member.register.submit');
+
+    // Forgot Password (Public — tanpa perlu login)
+    Route::get('/forgot-password', [MemberAuthController::class, 'showForgotPasswordForm'])
+        ->name('member.forgot-password.form');
+    Route::post('/forgot-password', [MemberAuthController::class, 'forgotPassword'])
+        ->name('member.forgot-password.submit');
 });
 
 /*
@@ -373,16 +390,6 @@ Route::prefix('member')
             Route::post('/enable', [QRApiController::class, 'enable'])->name('enable');
             Route::get('/status', [QRApiController::class, 'status'])->name('status');
         });
-
-        /*
-        |--------------------------------------------------------------------------
-        | PASSWORD MANAGEMENT
-        |--------------------------------------------------------------------------
-        */
-        Route::get('/change-password', [MemberAuthController::class, 'showChangePasswordForm'])
-            ->name('password.form');
-        Route::post('/change-password', [MemberAuthController::class, 'changePassword'])
-            ->name('change-password');
 
         /*
         |--------------------------------------------------------------------------

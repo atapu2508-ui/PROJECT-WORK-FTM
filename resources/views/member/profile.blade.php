@@ -12,11 +12,17 @@
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    {{-- FTM Brand Typography (local Nord + Instrument Serif) --}}
+    <link rel="preload" href="{{ asset('fonts/Nord-Black.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/Nord-Bold.woff2') }}"  as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/Nord-Book.woff2') }}"  as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ asset('css/ftm-typography.css') }}">
+
     <!-- Remix Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
-    
+
     <!-- Compiled CSS via Vite (Production TailwindCSS) -->
     @vite(['resources/css/member.css'])
     
@@ -26,61 +32,15 @@
       /* ========================================= */
       /* BASE STYLES                               */
       /* ========================================= */
-      
+
       * {
         box-sizing: border-box;
       }
-      
+
       body {
-        font-family: 'Poppins', sans-serif !important;
         font-size: 16px;
-        line-height: 1.6;
-        font-weight: 500;
-        letter-spacing: 0.3px;
-      }
-
-      body * {
-        font-family: 'Poppins', sans-serif !important;
-      }
-
-      p {
-        font-weight: 500;
-        line-height: 1.6;
-        letter-spacing: 0.3px;
-      }
-
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Poppins', sans-serif !important;
-        font-weight: 700;
-        line-height: 1.3;
-        letter-spacing: 0.5px;
-      }
-
-      nav,
-      button,
-      a,
-      span,
-      label {
-        font-family: 'Poppins', sans-serif !important;
-        letter-spacing: 0.3px;
-      }
-
-      nav a,
-      button {
-        font-weight: 600;
-      }
-
-      input,
-      select,
-      textarea,
-      option,
-      summary,
-      .logo,
-      .font-heading,
-      .font-body,
-      .font-accent,
-      .accent-serif {
-        font-family: 'Poppins', sans-serif !important;
+        line-height: 1.65;
+        font-weight: 400;
       }
 
       i[class^="ri-"],
@@ -557,53 +517,35 @@
         <!-- filepath: c:\Users\hp\Desktop\progres\progres\resources\views\member\profile.blade.php -->
 <!-- HEADER -->
 <header class="fixed w-full bg-[#F4EEE6] bg-opacity-95 shadow-sm z-50">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="container mx-auto px-4 py-3 grid grid-cols-3 items-center">
 
-        <!-- LOGO -->
-        <a href="{{ route('member.dashboard') }}" class="logo text-[#EA6993] text-2xl font-heading font-bold hover:text-[#793451] transition tracking-tight">
-          <span class="font-accent italic text-3xl align-top mr-1">FTM <span class="font-accent italic text-3xl align-top ml-1">SOCIETY</span>
+        <!-- LOGO (LEFT) -->
+        <a href="{{ route('member.dashboard') }}" class="logo text-2xl hover:opacity-80 transition tracking-tight inline-flex items-baseline gap-1.5 justify-self-start">
+          <span class="font-nord font-black text-[#EA6993]">FTM</span>
+          <span class="font-instrument italic text-[#793451] text-3xl">Society</span>
         </a>
 
-        <!-- DESKTOP NAVIGATION -->
-        <nav class="hidden md:flex items-center space-x-8">
-
-            <!-- MENU UMUM -->
+        <!-- DESKTOP NAVIGATION (CENTER) -->
+        <nav class="hidden md:flex items-center justify-center gap-8 justify-self-center">
             <a href="#home" class="text-[#26282B] hover:text-[#EA6993] transition font-heading font-medium">Home</a>
-            <a href="#about" class="text-[#26282B] hover:text-[#EA6993] transition font-heading font-medium">About</a>
             <a href="#Programs" class="text-[#26282B] hover:text-[#EA6993] transition font-heading font-medium">Programs</a>
-            <a href="#Packages" class="text-[#26282B] hover:text-[#EA6993] transition font-heading font-medium">Packages</a>
-            <a href="#classes" class="text-[#26282B] hover:text-[#EA6993] transition font-heading font-medium">Classes</a>
-            <a href="#schedule" class="text-[#26282B] hover:text-[#EA6993] transition font-heading font-medium">Schedule</a>
+            <a href="#about" class="text-[#26282B] hover:text-[#EA6993] transition font-heading font-medium">About</a>
             <a href="#Facility" class="text-[#26282B] hover:text-[#EA6993] transition font-heading font-medium">Gallery</a>
             <a href="#contact" class="text-[#26282B] hover:text-[#EA6993] transition font-heading font-medium">Contact</a>
+        </nav>
 
-            <!-- PROFIL -->
-            <a href="{{ route('member.profile.modal') }}"
-         class="flex items-center gap-2 text-[#26282B]/80 hover:text-[#EA6993] transition font-heading font-medium">
-        <i class="ri-user-3-line text-xl"></i> Profil
-      </a>
-
-
-            <!-- LOGIN / LOGOUT -->
-            @auth('customer')
-                <button
-                    type="button"
-                    onclick="showLogoutModal()"
-                    class="bg-[#793451] text-white px-6 py-2 rounded-button font-heading font-bold hover:bg-[#26282B] transition"
-                >
-                    Logout
-                </button>
-            @else
+        <!-- LOGIN BUTTON (RIGHT) — only for guests; logged-in members logout via dashboard sidebar -->
+        <div class="hidden md:flex items-center gap-3 justify-self-end">
+            @guest('customer')
                 <a href="{{ route('member.login') }}"
                     class="bg-[#EA6993] text-white px-6 py-2 rounded-button hover:bg-[#793451] hover:scale-105 transition font-heading font-bold">
                     Login
                 </a>
-            @endauth
+            @endguest
+        </div>
 
-        </nav>
-
-        <!-- Mobile button (visible on small screens) -->
-        <div class="md:hidden flex items-center">
+        <!-- HAMBURGER (MOBILE) -->
+        <div class="md:hidden flex items-center justify-self-end">
           <button id="mobile-menu-button"
               class="w-10 h-10 flex items-center justify-center text-[#EA6993]"
               aria-label="Toggle mobile menu">
@@ -611,33 +553,10 @@
           </button>
         </div>
 
-      </div>
-    </header>
-
-
-<div id="logout-modal" class="fixed inset-0 bg-[#26282B] bg-opacity-50 hidden items-center justify-center z-50">
-    <div class="bg-[#F4EEE6] rounded-xl shadow-lg max-w-sm w-full p-8 relative flex flex-col items-center">
-        <h3 class="text-xl font-heading font-bold text-[#EA6993] mb-4">Konfirmasi Logout</h3>
-        <p class="mb-6 text-[#26282B] text-center font-body"><span class="accent-serif">Anda yakin ingin logout?</span><br>Pilih <span class="accent-serif">"Reset Password"</span> jika ingin mengganti password Anda.</p>
-        <div class="flex flex-col sm:flex-row gap-3 w-full">
-            <form method="POST" action="{{ route('member.logout') }}" class="w-full">
-                @csrf
-                <button type="submit"
-    class="w-full bg-[#793451] text-white px-4 py-2 rounded-button font-semibold">
-    Logout
-</button>
-</form>
-<a href="{{ route('member.password.form') }}"
-    class="w-full bg-[#EA6993] text-white px-4 py-2 rounded-button font-semibold text-center">
-    Reset Password
-</a>
-        </div>
-        <button type="button" onclick="closeLogoutModal()"
-            class="mt-4 w-full px-4 py-2 rounded-button border border-[#F1CCE3] text-[#26282B]/80 hover:bg-[#F1CCE3] transition font-semibold">
-            Batal
-        </button>
     </div>
-</div>
+</header>
+
+
 
     <!-- Mobile Navigation + Backdrop -->
     <div id="mobile-backdrop" class="fixed inset-0 bg-[#26282B] bg-opacity-40 hidden" style="z-index:9998; transition: opacity .25s; pointer-events:none;"></div>
@@ -655,12 +574,7 @@
 
       <nav class="flex flex-col gap-3 font-heading font-medium">
         @auth('customer')
-          <a href="{{ route('member.dashboard') }}" class="block px-4 py-3 rounded-md text-[#26282B] hover:bg-[#EA6993] hover:text-white transition font-semibold">Profile</a>
-          <a href="{{ route('member.password.form') }}" class="block px-4 py-3 rounded-md text-[#26282B] hover:bg-[#EA6993] hover:text-white transition font-semibold">Ubah Password</a>
-          <form method="POST" action="{{ route('member.logout') }}" class="px-4">
-            @csrf
-            <button type="submit" class="w-full text-left px-4 py-3 rounded-md text-[#26282B] hover:bg-[#793451] hover:text-white transition font-semibold">Logout ({{ Auth::guard('customer')->user()->name }})</button>
-          </form>
+          <a href="{{ route('member.dashboard') }}" class="block px-4 py-3 rounded-md text-[#26282B] hover:bg-[#EA6993] hover:text-white transition font-semibold">Dashboard</a>
         @else
           <a href="{{ route('member.login') }}" class="block px-4 py-3 rounded-md text-[#26282B] hover:bg-[#EA6993] hover:text-white transition font-semibold">Login</a>
           <a href="{{ route('member.register') }}" class="block px-4 py-3 rounded-md text-[#26282B] hover:bg-[#EA6993] hover:text-white transition font-semibold">Register</a>
@@ -726,26 +640,26 @@
 
         <!-- Main Heading - Premium Typography with Gradient & Shadow -->
         <div data-aos="fade-right" data-aos-delay="100" class="space-y-6">
-          <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] tracking-tighter drop-shadow-2xl" style="text-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+          <h1 class="font-nord text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] tracking-tighter drop-shadow-2xl" style="text-shadow: 0 20px 40px rgba(0,0,0,0.3);">
             YOUR<br/>
             <span class="relative inline-block my-3">
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F1CCE3] via-[#EA6993] to-[#F1CCE3] bg-[length:200%_auto] animate-gradient-shift drop-shadow-2xl" style="text-shadow: 0 10px 30px rgba(234, 105, 147, 0.4); filter: drop-shadow(0 20px 40px rgba(121, 52, 81, 0.3));">
-                PRODUCTIVE
+              <span class="font-instrument italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#F1CCE3] via-[#EA6993] to-[#F1CCE3] bg-[length:200%_auto] animate-gradient-shift drop-shadow-2xl" style="text-shadow: 0 10px 30px rgba(234, 105, 147, 0.4); filter: drop-shadow(0 20px 40px rgba(121, 52, 81, 0.3)); letter-spacing: -0.02em;">
+                Productive
               </span>
               <!-- Elegant Gradient Underline -->
               <div class="absolute -bottom-4 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-[#F1CCE3] to-transparent rounded-full opacity-80 blur-sm"></div>
               <div class="absolute -bottom-3 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#EA6993] to-transparent rounded-full"></div>
             </span><br/>
-            <span class="bg-gradient-to-r from-white to-[#F4EEE6] bg-clip-text text-transparent">SISTER</span>
+            <span class="font-nord bg-gradient-to-r from-white to-[#F4EEE6] bg-clip-text text-transparent">SISTER</span>
           </h1>
         </div>
 
         <!-- Subtitle - Refined Spacing & Hierarchy -->
         <div data-aos="fade-right" data-aos-delay="200" class="space-y-3 pt-4">
-          <p class="text-xl sm:text-2xl md:text-3xl text-white font-semibold leading-relaxed tracking-wide">
+          <p class="font-poppins text-xl sm:text-2xl md:text-3xl text-white font-medium leading-relaxed tracking-wide">
             Good Habit inside
           </p>
-          <p class="text-2xl sm:text-3xl md:text-4xl font-black bg-gradient-to-r from-[#F1CCE3] to-[#EA6993] bg-clip-text text-transparent drop-shadow-lg" style="text-shadow: 0 8px 20px rgba(234, 105, 147, 0.3);">
+          <p class="font-instrument italic text-3xl sm:text-4xl md:text-5xl bg-gradient-to-r from-[#F1CCE3] to-[#EA6993] bg-clip-text text-transparent drop-shadow-lg" style="text-shadow: 0 8px 20px rgba(234, 105, 147, 0.3);">
             Productive Muslimah
           </p>
         </div>

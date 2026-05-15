@@ -1,6 +1,9 @@
 /* FTM Society - Member CSS */
 /* Production-ready, compiled with Tailwind */
 
+/* FTM Brand Typography — Nord + Instrument Serif (local fonts) */
+@import './ftm-typography.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,13 +14,8 @@
 
 @layer base {
   body {
-    font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
     overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: 'Poppins', serif;
   }
 }
 
@@ -27,7 +25,8 @@
 
 @layer components {
   .logo {
-    font-family: 'Poppins', serif;
+    font-family: 'Nord', sans-serif;
+    font-weight: 900;
   }
 
   /* Navigation Link */

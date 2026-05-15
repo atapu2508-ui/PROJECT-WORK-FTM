@@ -97,13 +97,14 @@ class MemberAuthController extends Controller
             return redirect($redirect);
         }
 
-        // Jika wajib ganti password
+        // Jika wajib ganti password — logout & arahkan ke halaman lupa password
         if ($customer->force_password_change ?? false) {
-            return redirect()->route('member.change-password')
-                ->with('warning', 'Silakan ubah password Anda terlebih dahulu.');
+            Auth::guard('customer')->logout();
+            return redirect()->route('member.forgot-password.form')
+                ->with('warning', 'Silakan reset password Anda terlebih dahulu melalui form Lupa Password.');
         }
 
-        return redirect()->route('member.profile')->with('success', 'Login berhasil.');
+        return redirect()->route('member.dashboard')->with('success', 'Login berhasil.');
     }
 
     public function logout(Request $request)
@@ -150,29 +151,58 @@ class MemberAuthController extends Controller
         return redirect()->back()->with('success', 'Akun member berhasil dibuat. Password default: ' . $defaultPassword);
     }
 
-    public function showChangePasswordForm()
+    /**
+     * Tampilkan form Lupa Password (public, tanpa login).
+     */
+    public function showForgotPasswordForm()
     {
-        return view('member.change-password');
+        return view('member.forgot-password');
     }
 
-    public function changePassword(Request $request)
+    /**
+     * Proses reset password tanpa perlu login.
+     * Verifikasi identitas: email + nomor HP harus cocok di satu akun yang sama.
+     */
+    public function forgotPassword(Request $request)
     {
         $request->validate([
-            'current_password' => 'required',
-            'new_password'     => 'required|min:6|confirmed',
+            'email'                 => 'required|email',
+            'phone_number'          => 'required|string',
+            'new_password'          => 'required|string|min:8|confirmed',
+        ], [
+            'new_password.min'       => 'Password baru minimal 8 karakter.',
+            'new_password.confirmed' => 'Konfirmasi password tidak cocok.',
         ]);
 
-        $user = Auth::guard('customer')->user();
+        $email = strtolower(trim($request->email));
+        $phone = preg_replace('/\s+/', '', $request->phone_number);
 
-        if (!Hash::check($request->current_password, $user->password)) {
-            return back()->withErrors(['current_password' => 'Password lama salah']);
+        $customer = Customer::where('email', $email)
+            ->where('phone_number', $phone)
+            ->first();
+
+        if (!$customer) {
+            return back()
+                ->withErrors(['email' => 'Data tidak cocok. Pastikan email dan nomor HP terdaftar pada akun yang sama.'])
+                ->withInput($request->only('email', 'phone_number'));
         }
 
-        $customer = Customer::find($user->id);
-        $customer->password = Hash::make($request->new_password);
-        $customer->save(); // Tidak pakai update() → aman
+        if (!$customer->is_verified) {
+            return back()
+                ->withErrors(['email' => 'Akun Anda belum diverifikasi admin. Silakan hubungi admin terlebih dahulu.'])
+                ->withInput($request->only('email', 'phone_number'));
+        }
 
-        return redirect()->route('member.profile')->with('success', 'Password berhasil diubah!');
+        $customer->password = Hash::make($request->new_password);
+        if (isset($customer->force_password_change)) {
+            $customer->force_password_change = false;
+        }
+        $customer->save();
+
+        Log::info("[forgotPassword] Password reset berhasil untuk customer ID: {$customer->id}");
+
+        return redirect()->route('member.login.form')
+            ->with('success', 'Password berhasil direset. Silakan login menggunakan password baru Anda.');
     }
 
     public function sendLogin($id)

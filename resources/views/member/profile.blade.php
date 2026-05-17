@@ -534,24 +534,71 @@
             <a href="#contact" class="text-[#1C1C1C] hover:text-[#EE4E8B] transition font-heading font-medium">Contact</a>
         </nav>
 
-        <!-- LOGIN BUTTON (RIGHT) — only for guests; logged-in members logout via dashboard sidebar -->
+        <!-- LOGIN BUTTON (RIGHT) — guest sees Login; authed sees avatar that goes to dashboard -->
         <div class="hidden md:flex items-center gap-3 justify-self-end">
-            @guest('customer')
+            @auth('customer')
+                @php
+                    $authCustomer = auth('customer')->user();
+                    $authInitial  = strtoupper(mb_substr($authCustomer->name ?? 'M', 0, 1));
+                @endphp
+                <a href="{{ route('member.dashboard') }}"
+                   title="Buka Dashboard"
+                   aria-label="Buka Dashboard Member"
+                   class="inline-flex items-center gap-3 pl-1 pr-4 py-1 rounded-full bg-white border border-[#F4C9DF] hover:border-[#EE4E8B] hover:shadow-md transition-all group">
+                    {{-- Avatar --}}
+                    <span class="w-9 h-9 rounded-full flex items-center justify-center text-white font-nord font-black text-sm shadow"
+                          style="background:#EE4E8B; box-shadow:0 4px 10px rgba(238,78,139,0.30); border:2px solid #FCF9F2;">
+                        {{ $authInitial }}
+                    </span>
+                    {{-- Name + label --}}
+                    <span class="flex flex-col leading-tight">
+                        <span class="text-xs font-poppins font-semibold text-[#7A2B4A] truncate max-w-[120px]">
+                            {{ $authCustomer->name ?? 'Member' }}
+                        </span>
+                        <span class="text-[10px] uppercase tracking-widest font-nord font-bold text-[#EE4E8B]">
+                            Dashboard
+                        </span>
+                    </span>
+                    {{-- Arrow icon --}}
+                    <i class="ri-arrow-right-s-line text-[#7A2B4A] text-lg group-hover:translate-x-0.5 transition-transform"></i>
+                </a>
+            @else
                 <a href="{{ route('member.login') }}"
                     class="bg-[#EE4E8B] text-white px-6 py-2 rounded-button hover:bg-[#7A2B4A] hover:scale-105 transition font-heading font-bold">
                     Login
                 </a>
-            @endguest
+            @endauth
         </div>
 
-        <!-- HAMBURGER (MOBILE) -->
-        <div class="md:hidden flex items-center justify-self-end">
-          <button id="mobile-menu-button"
-              class="w-10 h-10 flex items-center justify-center text-[#EE4E8B]"
-              aria-label="Toggle mobile menu">
-            <i class="ri-menu-line ri-lg"></i>
-          </button>
-        </div>
+        <!-- AUTHED MOBILE — avatar bulat di kanan (next to hamburger) -->
+        @auth('customer')
+            <div class="md:hidden flex items-center gap-2 justify-self-end">
+                @php
+                    $authCustomerMobile = auth('customer')->user();
+                    $authInitialMobile  = strtoupper(mb_substr($authCustomerMobile->name ?? 'M', 0, 1));
+                @endphp
+                <a href="{{ route('member.dashboard') }}"
+                   aria-label="Buka Dashboard"
+                   class="w-10 h-10 rounded-full flex items-center justify-center font-nord font-black text-sm shadow text-white"
+                   style="background:#EE4E8B; box-shadow:0 4px 10px rgba(238,78,139,0.30); border:2px solid #FCF9F2;">
+                    {{ $authInitialMobile }}
+                </a>
+                <button id="mobile-menu-button"
+                    class="w-10 h-10 flex items-center justify-center text-[#EE4E8B]"
+                    aria-label="Toggle mobile menu">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        @else
+            <!-- HAMBURGER (MOBILE) — guest only -->
+            <div class="md:hidden flex items-center justify-self-end">
+              <button id="mobile-menu-button"
+                  class="w-10 h-10 flex items-center justify-center text-[#EE4E8B]"
+                  aria-label="Toggle mobile menu">
+                <i class="ri-menu-line ri-lg"></i>
+              </button>
+            </div>
+        @endauth
 
     </div>
 </header>

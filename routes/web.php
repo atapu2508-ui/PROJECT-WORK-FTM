@@ -1,5 +1,10 @@
 <?php
 
+// Railway Healthcheck
+Route::get('/healthz', function () {
+    return response('OK', 200);
+});
+
 use Illuminate\Support\Facades\Route;
 use App\Models\Schedule;
 use App\Models\Package;

@@ -90,6 +90,19 @@ class MemberAuthController extends Controller
         Auth::guard('customer')->login($customer);
         $request->session()->regenerate();
 
+        // Record login log (tidak fatal kalau gagal)
+        try {
+            \App\Models\CustomerLoginLog::create([
+                'customer_id'  => $customer->id,
+                'ip_address'   => $request->ip(),
+                'user_agent'   => substr((string) $request->userAgent(), 0, 500),
+                'device_type'  => $this->detectDeviceType($request->userAgent()),
+                'logged_in_at' => now(),
+            ]);
+        } catch (\Throwable $e) {
+            \Log::warning('[LoginLog] '.$e->getMessage());
+        }
+
         // Jika login setelah register untuk checkout
         if ($request->session()->has('redirect_after_login')) {
             $redirect = $request->session()->get('redirect_after_login');
@@ -534,5 +547,21 @@ class MemberAuthController extends Controller
         }
 
         return back()->with('success', 'Akses login dikirim via WhatsApp!');
+    }
+
+    /**
+     * Detect device type from User-Agent string (simple heuristic).
+     */
+    protected function detectDeviceType(?string $ua): string
+    {
+        if (!$ua) return 'unknown';
+        $ua = strtolower($ua);
+        if (str_contains($ua, 'mobile') || str_contains($ua, 'android') || str_contains($ua, 'iphone')) {
+            return 'mobile';
+        }
+        if (str_contains($ua, 'tablet') || str_contains($ua, 'ipad')) {
+            return 'tablet';
+        }
+        return 'desktop';
     }
 }

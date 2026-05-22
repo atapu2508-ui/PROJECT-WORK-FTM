@@ -26,6 +26,7 @@ class Customer extends Authenticatable
         'name',
         'email',
         'phone_number',
+        'avatar_path',
         'program',
         'quota',
         'password',
@@ -42,6 +43,9 @@ class Customer extends Authenticatable
         'qr_token',
         'qr_generated_at',
         'qr_active',
+        'notify_whatsapp_booking',
+        'notify_whatsapp_payment',
+        'notify_email_marketing',
     ];
 
     protected $hidden = [
@@ -57,7 +61,21 @@ class Customer extends Authenticatable
         'force_password_change' => 'boolean',
         'qr_generated_at' => 'datetime',
         'qr_active' => 'boolean',
+        'notify_whatsapp_booking' => 'boolean',
+        'notify_whatsapp_payment' => 'boolean',
+        'notify_email_marketing'  => 'boolean',
     ];
+
+    /**
+     * Accessor: avatar URL (return placeholder kalau tidak ada upload)
+     */
+    public function getAvatarUrlAttribute(): ?string
+    {
+        if (!empty($this->avatar_path)) {
+            return asset('storage/' . ltrim($this->avatar_path, '/'));
+        }
+        return null;
+    }
 
     // =====================================================
     // ================      RELASI        =================

@@ -408,6 +408,22 @@ Route::prefix('member')
 
         /*
         |--------------------------------------------------------------------------
+        | ACCOUNT / PROFILE API — Edit profil, password, avatar,
+        | notification preferences, emergency contact, login history
+        |--------------------------------------------------------------------------
+        */
+        Route::prefix('api/profile')->name('api.profile.')->group(function () {
+            Route::post('/update',         [\App\Http\Controllers\MemberAccountController::class, 'updateProfile'])->name('update');
+            Route::post('/avatar',         [\App\Http\Controllers\MemberAccountController::class, 'uploadAvatar'])->name('avatar');
+            Route::post('/avatar/remove',  [\App\Http\Controllers\MemberAccountController::class, 'removeAvatar'])->name('avatar.remove');
+            Route::post('/password',       [\App\Http\Controllers\MemberAccountController::class, 'updatePassword'])->name('password');
+            Route::post('/notifications',  [\App\Http\Controllers\MemberAccountController::class, 'updateNotifications'])->name('notifications');
+            Route::get('/login-history',   [\App\Http\Controllers\MemberAccountController::class, 'loginHistory'])->name('login-history');
+            Route::post('/logout-all',     [\App\Http\Controllers\MemberAccountController::class, 'logoutAll'])->name('logout-all');
+        });
+
+        /*
+        |--------------------------------------------------------------------------
         | LOGOUT
         |--------------------------------------------------------------------------
         */
